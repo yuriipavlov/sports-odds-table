@@ -2,11 +2,11 @@
 /**
  * Setup activation and deactivation functions
  *
- * @package           starter-kit-plugin
- * @author            SolidBunch
+ * @package           sports-odds-table
+ * @author            Yurii Pavlov
  */
 
-namespace StarterKitPlugin\Handlers;
+namespace SportsOddsTable\Handlers;
 
 defined( 'ABSPATH' ) || exit;
 

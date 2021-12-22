@@ -4,13 +4,13 @@
  *
  * Helper functions
  *
- * @package           starter-kit-plugin
- * @author            SolidBunch
+ * @package           sports-odds-table
+ * @author            Yurii Pavlov
  */
 
-namespace StarterKitPlugin\Helper;
+namespace SportsOddsTable\Helper;
 
-use StarterKitPlugin\App;
+use SportsOddsTable\App;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -29,7 +29,7 @@ class Utils {
 		$parts = explode( '/', $name );
 
 		$config = $direct
-			? apply_filters( 'starter-kit-plugin/config', require STARTER_KIT_PLUGIN_DIR . '/config/config.php' )
+			? apply_filters( 'sports-odds-table/config', require SPORTS_ODDS_TABLE_DIR . '/config/config.php' )
 			: App::getInstance()->getConfig();
 
 		if ( ! isset( $config[ $parts[0] ] ) ) {
@@ -64,7 +64,7 @@ class Utils {
 		$errors_silent = self::getConfigSetting( 'errors_silent', '', true );
 	
 		if ( empty( $errors_silent ) ) {
-			wp_die( __( 'Starter Kit Plugin Error. Look to log file for details.' ) );
+			wp_die( __( 'Sports Odds Table Error. Look to log file for details.' ) );
 		}
 	}
 

@@ -2,13 +2,13 @@
 /**
  * Application Singleton
  *
- * @package           starter-kit-plugin
- * @author            SolidBunch
+ * @package           sports-odds-table
+ * @author            Yurii Pavlov
  */
 
-namespace StarterKitPlugin;
+namespace SportsOddsTable;
 
-use StarterKitPlugin\Base\Hooks;
+use SportsOddsTable\Base\Hooks;
 
 defined( 'ABSPATH' ) || exit;
 

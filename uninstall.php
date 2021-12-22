@@ -1,24 +1,24 @@
 <?php
 /**
- * Starter Kit Plugin Uninstall
+ * Sports Odds Table Uninstall
  *
- * Uninstalling Starter Kit Plugin and deleting database data.
+ * Uninstalling Sports Odds Table and deleting database data.
  *
- * @package           starter-kit-plugin
- * @author            SolidBunch
+ * @package           sports-odds-table
+ * @author            Yurii Pavlov
  */
 
-use StarterKitPlugin\Helper\Utils;
+use SportsOddsTable\Helper\Utils;
 
 defined( 'WP_UNINSTALL_PLUGIN' ) || exit;
 
 //define plugin path and url without slash
-define( 'STARTER_KIT_PLUGIN_DIR', __DIR__ );
-define( 'STARTER_KIT_PLUGIN_FILE', __FILE__ );
-define( 'STARTER_KIT_PLUGIN_URL', plugins_url( '', __FILE__ ) );
+define( 'SPORTS_ODDS_TABLE_DIR', __DIR__ );
+define( 'SPORTS_ODDS_TABLE_FILE', __FILE__ );
+define( 'SPORTS_ODDS_TABLE_URL', plugins_url( '', __FILE__ ) );
 
 // Autoload
-require_once STARTER_KIT_PLUGIN_DIR . '/autoload.php';
+require_once SPORTS_ODDS_TABLE_DIR . '/autoload.php';
 
 $settings_prefix = Utils::getConfigSetting( 'settings_prefix', '', true );
 

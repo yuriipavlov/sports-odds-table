@@ -4,13 +4,13 @@
  *
  * Run hook handlers
  *
- * @package           starter-kit-plugin
- * @author            SolidBunch
+ * @package           sports-odds-table
+ * @author            Yurii Pavlov
  */
 
-namespace StarterKitPlugin\Base;
+namespace SportsOddsTable\Base;
 
-use StarterKitPlugin\Handlers;
+use SportsOddsTable\Handlers;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -22,8 +22,8 @@ class Hooks {
 		 *            Activation
 		 ************************************/
 
-		register_activation_hook( STARTER_KIT_PLUGIN_DIR, [ Handlers\PluginActivation::class, '_activate' ] );
-		register_deactivation_hook( STARTER_KIT_PLUGIN_DIR, [ Handlers\PluginActivation::class, '_deactivate' ] );
+		register_activation_hook( SPORTS_ODDS_TABLE_DIR, [ Handlers\PluginActivation::class, '_activate' ] );
+		register_deactivation_hook( SPORTS_ODDS_TABLE_DIR, [ Handlers\PluginActivation::class, '_deactivate' ] );
 
 
 		/************************************

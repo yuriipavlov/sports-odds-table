@@ -19,7 +19,7 @@ if ( ! function_exists( 'wlog' ) ) {
 	function wlog( $var, $desc = ' >> ', $clear_log = false ) {
 		$upload     = wp_upload_dir();
 		$upload_dir = $upload['basedir'];
-		$upload_dir .= '/starter_kit_plugin';
+		$upload_dir .= '/sports_odds_table';
 		
 		if ( ! file_exists( $upload_dir ) ) {
 			$upload_dir_created = mkdir( $upload_dir, 0775, true );
@@ -28,7 +28,7 @@ if ( ! function_exists( 'wlog' ) ) {
 			}
 		}
 		
-		$log_file_destination = $upload_dir . '/starter_kit_plugin.log';
+		$log_file_destination = $upload_dir . '/sports_odds_table.log';
 		
 		if ( $clear_log || ! file_exists( $log_file_destination ) ) {
 			file_put_contents( $log_file_destination, '' );

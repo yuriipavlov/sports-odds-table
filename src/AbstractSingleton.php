@@ -2,11 +2,11 @@
 /**
  * Abstract Class for creating Singleton Classes
  *
- * @package           starter-kit-plugin
- * @author            SolidBunch
+ * @package           sports-odds-table
+ * @author            Yurii Pavlov
  */
 
-namespace StarterKitPlugin;
+namespace SportsOddsTable;
 
 defined( 'ABSPATH' ) || exit;
 

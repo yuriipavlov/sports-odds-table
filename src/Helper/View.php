@@ -5,11 +5,11 @@
  * Anything to do with templates
  * and outputting client code
  *
- * @package           starter-kit-plugin
- * @author            SolidBunch
+ * @package           sports-odds-table
+ * @author            Yurii Pavlov
  */
 
-namespace StarterKitPlugin\Helper;
+namespace SportsOddsTable\Helper;
 
 use Exception;
 use RuntimeException;
@@ -31,7 +31,7 @@ class View {
 	public static function load( $path = '', array $data = [], $return = false, $base = null ) {
 		
 		if ( $base === null ) {
-			$base = STARTER_KIT_PLUGIN_DIR;
+			$base = SPORTS_ODDS_TABLE_DIR;
 		}
 		
 		$full_path = $base . $path . '.php';
