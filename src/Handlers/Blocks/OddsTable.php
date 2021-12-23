@@ -73,7 +73,7 @@ class OddsTable {
 	 * @return string
 	 **/
 	public static function show_odds_table(): string {
-		var_dump(Manager::getOddsList( 'soccer_epl', 'uk', 'totals' ));
+		//var_dump(Manager::getOddsList( 'soccer_epl', 'uk', 'totals' ));
 		return '';
 		
 	}
