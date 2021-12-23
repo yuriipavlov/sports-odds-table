@@ -10,7 +10,7 @@ import './table-block.scss';
  * Internal dependencies
  */
 import Edit from './edit';
-//import save from './save';
+import Save from "./save";
 
 /**
  * Registers the block
@@ -24,6 +24,5 @@ registerBlockType( 'sports-odds-table/table-block', {
 	/**
 	 * @see ./save.js
 	 */
-	//save,
-	save: () => { return null }
+	save: Save,
 } );
