@@ -27,6 +27,13 @@ class Hooks {
 
 
 		/************************************
+		 *         Gutenberg blocks
+		 ************************************/
+
+		add_action( 'init', [ Handlers\Blocks\OddsTable::class, 'register_block' ] );
+
+		
+		/************************************
 		 *            Frontend
 		 ************************************/
 
