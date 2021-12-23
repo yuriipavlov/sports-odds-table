@@ -9,6 +9,7 @@
 namespace SportsOddsTable\Handlers\Blocks;
 
 use SportsOddsTable\Helper\Utils;
+use SportsOddsTable\CurlClient\Manager;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -72,8 +73,8 @@ class OddsTable {
 	 * @return string
 	 **/
 	public static function show_odds_table(): string {
-		
-		return '<p>Test</p>';
+		var_dump(Manager::getOddsList( 'soccer_epl', 'uk', 'totals' ));
+		return '';
 		
 	}
 }

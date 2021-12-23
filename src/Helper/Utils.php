@@ -64,5 +64,15 @@ class Utils {
 			wp_die( __( 'Sports Odds Table Error. Look to log file for details.' ) );
 		}
 	}
+	
+	
+	/**
+	 * Get Odds Api key
+	 * 
+	 * @return string
+	 */
+	public static function getOddsApiKey(): string {
+		return get_option( 'sot_odds_api_key', '' );
+	}
 
 }
