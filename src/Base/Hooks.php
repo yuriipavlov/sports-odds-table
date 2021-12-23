@@ -37,6 +37,8 @@ class Hooks {
 		 ************************************/
 		add_action( 'admin_menu', [ Handlers\Settings::class, 'menu' ] );
 		add_action( 'admin_init', [ Handlers\Settings::class, 'settings_init' ] );
+		
+		add_filter( 'plugin_action_links', [ Handlers\Settings::class, 'add_action_links' ], 10, 2 );
 
 	}
 }

@@ -30,7 +30,7 @@ class Settings {
 		
 		register_setting(
 			'sot_settings__main_group',
-			'_sot_odds_api_key',
+			'sot_odds_api_key',
 			[ self::class, 'sanitize__odds_api_key' ]
 		);
 		
@@ -51,7 +51,7 @@ class Settings {
 			'sot_settings__main_section',
 			[
 				'tag_id'    => 'sot_odds_api_key_id',
-				'tag_name'  => '_sot_odds_api_key',
+				'tag_name'  => 'sot_odds_api_key',
 				'label_for' => 'sot_odds_api_key_id',
 			]
 		);
@@ -64,7 +64,7 @@ class Settings {
 	
 	public static function setting_view__odds_api_key( $args ) {
 		
-		$value = get_option( '_sot_odds_api_key', '' );
+		$value = get_option( 'sot_odds_api_key', '' );
 		
 		echo '
 				<input type="text" class="regular-text"
@@ -79,5 +79,19 @@ class Settings {
 	
 	public static function sanitize__odds_api_key( $input ) {
 		return sanitize_text_field( $input );
+	}
+
+	public static function add_action_links( $actions, $plugin_file ) {
+		if( false === strpos( $plugin_file, basename(SPORTS_ODDS_TABLE_FILE ) ) ) {
+			return $actions;
+		}
+		
+		$settings_link = '<a href="options-general.php?page=sot_settings' .'">Settings</a>';
+		
+		array_unshift( $actions, $settings_link );
+		
+		return $actions;
+		
+		
 	}
 }
