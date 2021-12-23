@@ -27,12 +27,11 @@ class Hooks {
 
 
 		/************************************
-		 *            Frontend
+		 *         Gutenberg blocks
 		 ************************************/
 
-		// load front assets
-		add_action( 'wp_enqueue_scripts', [ Handlers\Front::class, 'load_front_styles' ] );
-		add_action( 'wp_enqueue_scripts', [ Handlers\Front::class, 'load_front_scripts' ] );
+		add_action( 'init', [ Handlers\Blocks\OddsTable::class, 'register_block' ] );
+		add_action( 'init', [ Handlers\Blocks\OddsTable::class, 'register_assets' ] );
 
 	}
 }
