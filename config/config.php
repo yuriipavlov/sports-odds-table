@@ -15,11 +15,7 @@ return [
 	'version'         => 10000,
 	'settings_prefix' => 'sot_',
 	'errors_silent'   => true,
+	'odds_api_url'    => 'https://api.the-odds-api.com/v3/',
 	'vendor_dir'      => SPORTS_ODDS_TABLE_DIR . '/vendor/',
 	'assets_uri'      => SPORTS_ODDS_TABLE_URL . '/assets/',
-	
-	'example_option' => [
-		'array_option1' => 'value1',
-		'array_option2' => 'value2',
-	]
 ];
