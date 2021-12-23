@@ -49,6 +49,5 @@ $config = apply_filters( 'sports-odds-table/config', require SPORTS_ODDS_TABLE_D
 try {
 	$app->run( $config );
 } catch ( Throwable $throwable ) {
-	//Utils::setErrorHandler();
 	Utils::errorHandler( $throwable );
 }
