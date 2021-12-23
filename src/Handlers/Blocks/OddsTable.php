@@ -29,6 +29,7 @@ class OddsTable {
 			'textdomain'      => 'sports-odds-table',
 			'category'        => 'widgets',
 			'icon'            => 'universal-access-alt',
+			'script'          => '',
 			'style'           => 'sports-odds-table-block',
 			'editor_script'   => 'sports-odds-table-block',
 			'editor_style'    => 'sports-odds-table-block',
@@ -72,7 +73,7 @@ class OddsTable {
 	 **/
 	public static function show_odds_table(): string {
 		
-		return 'Test';
+		return '<p>Test</p>';
 		
 	}
 }
