@@ -12,11 +12,11 @@ defined( 'ABSPATH' ) || exit;
 
 class PluginActivation {
 
-	public static function _activate() {
+	public static function activate() {
 
 	}
 
-	public static function _deactivate() {
+	public static function deactivate() {
 
 	}
 

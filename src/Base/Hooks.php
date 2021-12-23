@@ -10,7 +10,9 @@
 
 namespace SportsOddsTable\Base;
 
-use SportsOddsTable\Handlers;
+use SportsOddsTable\Handlers\PluginActivation;
+use SportsOddsTable\Handlers\Blocks;
+use SportsOddsTable\Handlers\Settings;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -21,24 +23,24 @@ class Hooks {
 		/************************************
 		 *            Activation
 		 ************************************/
-		register_activation_hook( SPORTS_ODDS_TABLE_DIR, [ Handlers\PluginActivation::class, '_activate' ] );
-		register_deactivation_hook( SPORTS_ODDS_TABLE_DIR, [ Handlers\PluginActivation::class, '_deactivate' ] );
+		register_activation_hook( SPORTS_ODDS_TABLE_DIR, [ PluginActivation::class, 'activate' ] );
+		register_deactivation_hook( SPORTS_ODDS_TABLE_DIR, [ PluginActivation::class, 'deactivate' ] );
 
 
 		/************************************
 		 *         Gutenberg blocks
 		 ************************************/
-		add_action( 'init', [ Handlers\Blocks\OddsTable::class, 'register_block' ] );
-		add_action( 'init', [ Handlers\Blocks\OddsTable::class, 'register_assets' ] );
+		add_action( 'init', [ Blocks\OddsTable::class, 'register_block' ] );
+		add_action( 'init', [ Blocks\OddsTable::class, 'register_assets' ] );
 		
 		
 		/************************************
 		 *           Settings menu
 		 ************************************/
-		add_action( 'admin_menu', [ Handlers\Settings::class, 'menu' ] );
-		add_action( 'admin_init', [ Handlers\Settings::class, 'settings_init' ] );
+		add_action( 'admin_menu', [ Settings::class, 'menu' ] );
+		add_action( 'admin_init', [ Settings::class, 'settings_init' ] );
 		
-		add_filter( 'plugin_action_links', [ Handlers\Settings::class, 'add_action_links' ], 10, 2 );
+		add_filter( 'plugin_action_links', [ Settings::class, 'add_action_links' ], 10, 2 );
 
 	}
 }
