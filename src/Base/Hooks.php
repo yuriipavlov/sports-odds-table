@@ -21,7 +21,6 @@ class Hooks {
 		/************************************
 		 *            Activation
 		 ************************************/
-
 		register_activation_hook( SPORTS_ODDS_TABLE_DIR, [ Handlers\PluginActivation::class, '_activate' ] );
 		register_deactivation_hook( SPORTS_ODDS_TABLE_DIR, [ Handlers\PluginActivation::class, '_deactivate' ] );
 
@@ -29,9 +28,15 @@ class Hooks {
 		/************************************
 		 *         Gutenberg blocks
 		 ************************************/
-
 		add_action( 'init', [ Handlers\Blocks\OddsTable::class, 'register_block' ] );
 		add_action( 'init', [ Handlers\Blocks\OddsTable::class, 'register_assets' ] );
+		
+		
+		/************************************
+		 *           Settings menu
+		 ************************************/
+		add_action( 'admin_menu', [ Handlers\Settings::class, 'menu' ] );
+		add_action( 'admin_init', [ Handlers\Settings::class, 'settings_init' ] );
 
 	}
 }
