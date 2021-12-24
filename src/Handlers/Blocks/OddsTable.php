@@ -9,6 +9,7 @@
 namespace SportsOddsTable\Handlers\Blocks;
 
 use SportsOddsTable\Helper\Utils;
+use SportsOddsTable\Helper\View;
 use SportsOddsTable\CurlClient\Manager;
 
 defined( 'ABSPATH' ) || exit;
@@ -30,7 +31,7 @@ class OddsTable {
 			'textdomain'      => 'sports-odds-table',
 			'category'        => 'widgets',
 			'icon'            => 'universal-access-alt',
-			'script'          => '',
+			//'script'          => '',
 			'style'           => 'sports-odds-table-block',
 			'editor_script'   => 'sports-odds-table-block',
 			'editor_style'    => 'sports-odds-table-block',
@@ -73,8 +74,8 @@ class OddsTable {
 	 * @return string
 	 **/
 	public static function show_odds_table(): string {
-		//var_dump(Manager::getOddsList( 'soccer_epl', 'uk', 'totals' ));
-		return '';
+		//var_dump(Manager::getOddsList( 'soccer_epl', 'uk' ));
+		return View::load('/templates/odds-table', ['odds_list' => Manager::getOddsList( 'soccer_epl', 'uk' )], true);
 		
 	}
 }
