@@ -1,6 +1,5 @@
 <?php
 
-use SportsOddsTable\CurlClient\Manager;
 use SportsOddsTable\Helper\View;
 
 $data = $data ?? [];

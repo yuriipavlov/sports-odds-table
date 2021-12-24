@@ -10,27 +10,27 @@ $data = $data ?? [];
 				<span>Dec 26th</span>
 				<span>15:00</span>
 			</div>
-			<a class="sot-teams">
+			<div class="sot-teams">
 				<div>Galatasaray SK</div>
 				<div>
 					<span class="sot-vs"> vs </span>
 					Antalyaspor
 				</div>
-			</a>
+			</div>
 		</div>
 		
 		<div class="sot-sites">
 			<div class="sot-site">
-				<div class="sot-site-title"></div>
+				<div class="sot-site-title">Matchbook</div>
 				<div class="sot-odds">
 					<div class="sot-odd">
-						<span></span>
+						<span>1</span>
 					</div>
 					<div class="sot-odd">
-						<span></span>
+						<span>2</span>
 					</div>
 					<div class="sot-odd">
-						<span></span>
+						<span>3</span>
 					</div>
 				</div>
 			</div>
