@@ -12,7 +12,7 @@
  * Plugin URI:        https://github.com/yuriipavlov/sports-odds-table
  * Description:       Show sports odds data from a public API in a simple table, with a few filters to allow easier odds preview.
  * Version:           1.0.0
- * Requires at least: 5.2
+ * Requires at least: 5.6
  * Requires PHP:      7.4
  * Author:            Yurii Pavlov
  * Author URI:        https://www.linkedin.com/in/yurii-pavlov/

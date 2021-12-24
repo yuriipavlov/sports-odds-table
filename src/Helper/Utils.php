@@ -49,6 +49,13 @@ class Utils {
 		return $value;
 	}
 	
+	/**
+	 * Error Handler function
+	 *
+	 * @param $throwable
+	 *
+	 * @return void
+	 */
 	public static function errorHandler( $throwable ) {
 		
 		$error_message = 'Sports Odds Table PHP error: ' . $throwable->getMessage();
@@ -58,11 +65,21 @@ class Utils {
 		
 		error_log( $error_message );
 		
-		$errors_silent = self::getConfigSetting( 'errors_silent', '', true );
+		$errors_silent = self::getConfigSetting( 'errors_silent' );
 		
 		if ( empty( $errors_silent ) ) {
 			wp_die( __( 'Sports Odds Table Error. Look to log file for details.' ) );
 		}
+	}
+	
+	
+	/**
+	 * Get Odds Api key
+	 * 
+	 * @return string
+	 */
+	public static function getOddsApiKey(): string {
+		return get_option( 'sot_odds_api_key', '' );
 	}
 
 }
