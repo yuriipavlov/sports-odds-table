@@ -1,4 +1,4 @@
-#Sports Odds Table
+# Sports Odds Table
 
 Show sports odds data from a public API in a simple table, with a few filters to allow easier odds preview.
 
