@@ -12,11 +12,15 @@ module.exports = {
 	...defaultConfig,
 	...{
 		entry: {
-			"table-block": path.resolve( process.cwd(), 'blocks/table-block', 'table-block.js' ),
+			'table-block': path.resolve(
+				process.cwd(),
+				'blocks/table-block',
+				'table-block.js'
+			),
 		},
 		output: {
 			filename: '[name].js',
 			path: path.resolve( process.cwd(), 'assets/build' ),
 		},
-	}
-}
+	},
+};

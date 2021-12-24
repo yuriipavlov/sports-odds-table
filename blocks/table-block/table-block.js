@@ -10,7 +10,7 @@ import './table-block.scss';
  * Internal dependencies
  */
 import Edit from './edit';
-import Save from "./save";
+import Save from './save';
 
 /**
  * Registers the block

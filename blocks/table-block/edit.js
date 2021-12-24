@@ -5,9 +5,7 @@
  */
 import { __ } from '@wordpress/i18n';
 
-
 import { useBlockProps } from '@wordpress/block-editor';
-
 
 /**
  * This represents what the editor will render when the block is used.
