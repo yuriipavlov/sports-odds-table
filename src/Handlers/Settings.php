@@ -2,6 +2,8 @@
 
 namespace SportsOddsTable\Handlers;
 
+use SportsOddsTable\Helper\View;
+
 defined( 'ABSPATH' ) || exit;
 
 
@@ -22,7 +24,7 @@ class Settings {
 	
 	
 	public static function settings_page() {
-		include SPORTS_ODDS_TABLE_DIR . '/templates/settings-page.php';
+		View::load( '/templates/settings-page' );
 	}
 	
 	

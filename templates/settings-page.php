@@ -1,4 +1,12 @@
 <?php
+/**
+ * Plugin settings page template.
+ * Loads in Handlers\Settings
+ *
+ * @package           sports-odds-table
+ * @author            Yurii Pavlov
+ */
+
 defined( 'ABSPATH' ) || exit;
 ?>
 
