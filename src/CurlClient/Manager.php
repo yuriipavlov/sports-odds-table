@@ -15,13 +15,32 @@ use SportsOddsTable\Helper\Utils;
 class Manager {
 	
 	
-	private static $base_url;
+	private static string $base_url;
 	
-	private static $api_key;
+	private static string $api_key;
 	
+	/**
+	 * Get List of Sports
+	 *
+	 * @return array
+	 */
+	public static function getSportsList(): array {
+		
+		if ( ! self::initRequiredData() ) {
+			return [];
+		}
+		
+		$request_url = self::$base_url . 'sports?apiKey=' . self::$api_key;
+		
+		$result        = Process::run( $request_url, [] );
+		$is_success    = $result['success'] && ! empty( $result['data_raw'] );
+		$results_array = json_decode( $result['data_raw'], true );
+		
+		return $is_success ? $results_array['data'] : [];
+	}
 	
 	private static function initRequiredData(): bool {
-		self::$base_url = self::$base_url ?? Utils::getConfigSetting( 'odds_api_url', '' );
+		self::$base_url = self::$base_url ?? strval( Utils::getConfigSetting( 'odds_api_url', '' ) );
 		self::$api_key  = self::$api_key ?? Utils::getOddsApiKey();
 		
 		if ( ! self::$base_url ) {
@@ -40,33 +59,18 @@ class Manager {
 	}
 	
 	/**
-	 * Get List of Sports
-	 *
-	 * @return string
-	 */
-	public static function getSportsList() {
-		
-		if ( ! self::initRequiredData() ) {
-			return false;
-		}
-		
-		$request_url = self::$base_url . 'sports?apiKey=' . self::$api_key;
-		
-		$result     = Process::run( $request_url, [] );
-		$is_success = $result['success'] && ! empty( $result['data_raw'] );
-		
-		return $is_success ? $result['data_raw'] : '';
-	}
-	
-	/**
 	 * Get List of Odds
 	 *
-	 * @return string
+	 * @param string $sport
+	 * @param string $region
+	 * @param string $mkt
+	 *
+	 * @return array
 	 */
-	public static function getOddsList( $sport, $region, $mkt = '' ) {
+	public static function getOddsList( string $sport, string $region, $mkt = '' ): array {
 		
 		if ( ! self::initRequiredData() ) {
-			return false;
+			return [];
 		}
 		
 		$request_url = self::$base_url . 'odds?apiKey=' . self::$api_key . "&sport={$sport}&region={$region}";
@@ -76,9 +80,11 @@ class Manager {
 			$request_url .= "&mkt={$mkt}";
 		}
 		
-		$result     = Process::run( $request_url, [] );
-		$is_success = $result['success'] && ! empty( $result['data_raw'] );
+		$result        = Process::run( $request_url, [] );
+		$is_success    = $result['success'] && ! empty( $result['data_raw'] );
+		$results_array = json_decode( $result['data_raw'], true );
 		
-		return $is_success ? $result['data_raw'] : '';
+		return $is_success ? $results_array['data'] : [];
+		
 	}
 }

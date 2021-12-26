@@ -4,7 +4,6 @@ use SportsOddsTable\Helper\View;
 
 $data = $data ?? [];
 
-//var_dump($data);
 ?>
 
 <div class="sports-odds-table">
@@ -13,17 +12,23 @@ $data = $data ?? [];
 	</div>
 	
 	<?php
-		// Show filter template
-		View::load('/templates/odds-table-filter', ['data'] );
+	// Show filter template
+	View::load( '/templates/odds-table-filter', [ 'data' ] );
 	?>
-
-	<div class="sot-events">
+	
+	<?php if ( ! empty( $data ) ) { ?>
+		<div class="sot-events">
+			
+			
+			<?php foreach ( $data as $event ) {
+				// Show event template
+				View::load( '/templates/odds-table-event', $event );
+			} ?>
 		
-		
-		<?php
-		// Show event template
-		View::load('/templates/odds-table-event', ['data'] );
-		?>
-		
-	</div>
+		</div>
+	<?php } else { ?>
+		<div class="sot-empty">
+			<p><?php _e( 'There is no Odds data', 'sports-odds-table' ); ?></p>
+		</div>
+	<?php } ?>
 </div>

@@ -90,7 +90,24 @@
 						}
 					}
 				}
+				.sot-sites {
+					display: flex;
+					flex-direction: row;
+					.sot-site {
+						
+						.sot-odds {
+							display: flex;
+							flex-direction: row;
+							width: 100%;
+							align-items: center;
+							
+						}
+					}
+				}
 			}
 		}
+	}
+	.sot-empty {
+		text-align: center;
 	}
 }

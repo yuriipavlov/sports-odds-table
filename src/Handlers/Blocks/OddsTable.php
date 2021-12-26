@@ -46,7 +46,7 @@ class OddsTable {
 	 * @return void
 	 */
 	public static function register_assets() {
-		$assets_uri = Utils::getConfigSetting( 'assets_uri' ) ;
+		$assets_uri = Utils::getConfigSetting( 'assets_uri' );
 		$assets_dir = Utils::getConfigSetting( 'assets_dir' );
 		$asset_file = include $assets_dir . '/table-block.asset.php';
 		
@@ -74,8 +74,10 @@ class OddsTable {
 	 * @return string
 	 **/
 	public static function show_odds_table(): string {
-		//var_dump(Manager::getOddsList( 'soccer_epl', 'uk' ));
-		return View::load('/templates/odds-table', ['odds_list' => Manager::getOddsList( 'soccer_epl', 'uk' )], true);
+		
+		$odds_list_data = Manager::getOddsList( 'soccer_epl', 'uk' );
+		
+		return View::load( '/templates/odds-table', $odds_list_data, true );
 		
 	}
 }
