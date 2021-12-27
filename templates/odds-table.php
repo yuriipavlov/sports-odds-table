@@ -7,9 +7,6 @@ $data = $data ?? [];
 ?>
 
 <div class="sports-odds-table">
-	<div class="sot-title">
-	
-	</div>
 	
 	<div class="sot-filter">
 		<?php
