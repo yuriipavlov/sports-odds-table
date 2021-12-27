@@ -1,0 +1,24 @@
+.sot-filter-btn {
+	font-size: 16px;
+	padding: 11px 20px;
+	font-weight: normal;
+	border: 0;
+	border-radius: 4px;
+	background: $main_dark;
+	color: $main_white;
+	user-select: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	line-height: 1.5;
+	transition: all 0.3s ease;
+	
+	&:hover {
+		background: lighten($main_lighten, 10%);
+	}
+}
+
+.sot-btn-block {
+	display: block !important;
+	width: 100%;
+}

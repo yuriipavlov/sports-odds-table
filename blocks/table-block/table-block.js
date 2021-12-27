@@ -4,7 +4,7 @@
  */
 import { registerBlockType } from '@wordpress/blocks';
 
-import './table-block.scss';
+import './sass/table-block.scss';
 
 /**
  * Internal dependencies

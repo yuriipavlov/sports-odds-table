@@ -17,6 +17,11 @@ module.exports = {
 				'blocks/table-block',
 				'table-block.js'
 			),
+			'table-block-front': path.resolve(
+				process.cwd(),
+				'blocks/table-block',
+				'table-block-front.js'
+			),
 		},
 		output: {
 			filename: '[name].js',

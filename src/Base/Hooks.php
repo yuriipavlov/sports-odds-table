@@ -17,21 +17,25 @@ use SportsOddsTable\Handlers\Settings;
 defined( 'ABSPATH' ) || exit;
 
 class Hooks {
-
+	
 	public static function runHooks() {
-
+		
 		/************************************
 		 *            Activation
 		 ************************************/
 		register_activation_hook( SPORTS_ODDS_TABLE_DIR, [ PluginActivation::class, 'activate' ] );
 		register_deactivation_hook( SPORTS_ODDS_TABLE_DIR, [ PluginActivation::class, 'deactivate' ] );
-
-
+		
+		
 		/************************************
 		 *         Gutenberg blocks
 		 ************************************/
 		add_action( 'init', [ Blocks\OddsTable::class, 'register_block' ] );
 		add_action( 'init', [ Blocks\OddsTable::class, 'register_assets' ] );
+		add_action( 'wp_enqueue_scripts', [ Blocks\OddsTable::class, 'enqueue_assets_libs' ], 5 );
+		
+		add_action( 'wp_ajax_sports_odds_table_filter', [ Blocks\OddsTable::class, 'sports_odds_table_filter' ] );
+		add_action( 'wp_ajax_nopriv_sports_odds_table_filter', [ Blocks\OddsTable::class, 'sports_odds_table_filter' ] );
 		
 		
 		/************************************
@@ -41,6 +45,6 @@ class Hooks {
 		add_action( 'admin_init', [ Settings::class, 'settings_init' ] );
 		
 		add_filter( 'plugin_action_links', [ Settings::class, 'add_action_links' ], 10, 2 );
-
+		
 	}
 }

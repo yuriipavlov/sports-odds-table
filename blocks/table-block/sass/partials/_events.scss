@@ -1,0 +1,104 @@
+
+.sot-events {
+	
+	.sot-event {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		padding: 15px 0;
+		border-bottom: 1px solid $main_gray;
+		
+		.sot-info {
+			text-align: center;
+			max-width: 220px;
+			flex: 0 0 220px;
+			padding-right: 15px;
+			padding-bottom: 15px;
+			@media (min-width: 576px) {
+				padding-bottom: 0;
+			}
+			
+			span, strong {
+				font-weight: bold;
+				display: block;
+			}
+			
+			span {
+				color: $main_red;
+			}
+			
+			img {
+				max-width: 18px;
+				flex: 0 0 18px;
+			}
+			
+			.sot-date {
+				display: block;
+				font-style: normal;
+				color: $main_gray;
+				padding-top: 10px;
+			}
+		}
+		
+		.sot-sites {
+			flex: 0 0 100%;
+			max-width: 100%;
+			min-width: 0;
+			@media (min-width: 576px) {
+				flex-basis: 0;
+				flex-grow: 1;
+				max-width: 100%;
+			}
+			
+			.sot-sites-list {
+				display: flex;
+				max-width: 100%;
+				flex: 0 0 100%;
+				overflow: auto;
+				padding: 0 0 10px 0;
+				margin: 0;
+				list-style: none;
+				
+				li {
+					max-width: 150px;
+					flex: 0 0 150px;
+					padding: 10px 10px;
+					text-align: center;
+					
+					&:nth-child(odd) {
+						background: $main_light;
+					}
+					
+					.sot-site-title {
+						display: block;
+						padding-bottom: 7px;
+						white-space: nowrap;
+						overflow: hidden;
+						text-overflow: ellipsis;
+					}
+					
+					.sot-odds {
+						display: flex;
+						
+						.sot-odd {
+							flex-basis: 0;
+							flex-grow: 1;
+							max-width: 100%;
+							padding-left: 4px;
+							padding-right: 4px;
+							
+							span {
+								color: $main_gray;
+							}
+						}
+					}
+				}
+			}
+		}
+		
+	}
+}
+
+.sot-empty {
+	text-align: center;
+}
