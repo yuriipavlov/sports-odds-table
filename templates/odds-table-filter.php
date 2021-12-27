@@ -1,5 +1,7 @@
 <?php
+
 $data = $data ?? [];
+
 ?>
 
 <div class="sot-filter-item">
@@ -8,8 +10,10 @@ $data = $data ?? [];
 		<div class="sot-filter-drop">
 			<div class="sot-filter-drop-custom">
 				<select data-jcf='{"wrapNative": false,"fakeDropInBody":false, "wrapNativeOnMobile": false}'>
-					<option value="v3">American Football</option>
-					<option value="v3">Soccer</option>
+					<option value="upcoming"><?php _e( 'Upcoming', 'sports-odds-table' ); ?></option>
+					<?php foreach ( $data as $sport ) { ?>
+						<option value="<?php echo $sport['key'] ?>"><?php echo $sport['title'] ?></option>
+					<?php } ?>
 				</select>
 			</div>
 		</div>
@@ -21,8 +25,10 @@ $data = $data ?? [];
 		<div class="sot-filter-drop">
 			<div class="sot-filter-drop-custom">
 				<select data-jcf='{"wrapNative": false,"fakeDropInBody":false, "wrapNativeOnMobile": false}'>
-					<option value="v3">United Kingdom</option>
-					<option value="v3">United States</option>
+					<option value="uk"><?php _e( 'United Kingdom', 'sports-odds-table' ); ?></option>
+					<option value="us"><?php _e( 'United States', 'sports-odds-table' ); ?></option>
+					<option value="eu"><?php _e( 'Europe', 'sports-odds-table' ); ?></option>
+					<option value="au"><?php _e( 'Australia', 'sports-odds-table' ); ?></option>
 				</select>
 			</div>
 		</div>
@@ -34,8 +40,9 @@ $data = $data ?? [];
 		<div class="sot-filter-drop">
 			<div class="sot-filter-drop-custom">
 				<select data-jcf='{"wrapNative": false,"fakeDropInBody":false, "wrapNativeOnMobile": false}'>
-					<option value="v3">Head to Head</option>
-					<option value="v3">Spreads</option>
+					<option value="h2h"><?php _e( 'Head to Head', 'sports-odds-table' ); ?></option>
+					<option value="spreads"><?php _e( 'Spreads', 'sports-odds-table' ); ?></option>
+					<option value="totals"><?php _e( 'Totals', 'sports-odds-table' ); ?></option>
 				</select>
 			</div>
 		</div>

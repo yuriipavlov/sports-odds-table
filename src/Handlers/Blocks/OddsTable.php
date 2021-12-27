@@ -82,7 +82,7 @@ class OddsTable {
 		
 		$assets_uri = Utils::getConfigSetting( 'assets_uri' );
 		$assets_dir = Utils::getConfigSetting( 'assets_dir' );
-
+		
 		wp_enqueue_script(
 			'sports-odds-jcf',
 			$assets_uri . '/lib/jcf.js',
@@ -104,7 +104,7 @@ class OddsTable {
 			[],
 			filemtime( $assets_dir . '/lib/jcf.min.css' ),
 		);
-
+		
 	}
 	
 	/**
@@ -114,9 +114,11 @@ class OddsTable {
 	 **/
 	public static function show_odds_table(): string {
 		
-		$odds_list_data = Manager::getOddsList( 'soccer_epl', 'uk' );
+		$sports_list = Manager::getSportsList();
 		
-		return View::load( '/templates/odds-table', $odds_list_data, true );
+		$odds_list = Manager::getOddsList( 'upcoming', 'uk' );
+		
+		return View::load( '/templates/odds-table', [ 'sports_list' => $sports_list, 'odds_list' => $odds_list ], true );
 		
 	}
 }
