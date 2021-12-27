@@ -7,13 +7,17 @@ $data = $data ?? [];
 <div class="sot-event">
 	<div class="sot-info">
 		<div>
-			<strong<?php if ( $data['teams'][0] === $data['home_team'] ) { echo ' class="sot-home-team"'; } ?>>
+			<strong<?php if ( $data['teams'][0] === $data['home_team'] ) {
+				echo ' class="sot-home-team"';
+			} ?>>
 				<?php echo $data['teams'][0]; ?>
 			</strong>
 		</div>
 		<span>vs</span>
 		<div>
-			<strong<?php if ( $data['teams'][1] === $data['home_team'] ) { echo ' class="sot-home-team"'; } ?>>
+			<strong<?php if ( $data['teams'][1] === $data['home_team'] ) {
+				echo ' class="sot-home-team"';
+			} ?>>
 				<?php echo $data['teams'][1]; ?>
 			</strong>
 		</div>
