@@ -1,5 +1,8 @@
 
 .sot-events {
+	background: $main_white;
+	padding-left: 15px;
+	padding-right: 15px;
 	
 	.sot-event {
 		display: flex;
@@ -7,6 +10,10 @@
 		justify-content: center;
 		padding: 15px 0;
 		border-bottom: 1px solid $main_gray;
+		
+		&:last-child {
+			border-bottom: none;
+		}
 		
 		.sot-info {
 			text-align: center;
