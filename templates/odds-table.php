@@ -14,14 +14,14 @@ $data = $data ?? [];
 	<div class="sot-filter">
 		<?php
 		// Show filter template
-		View::load( '/templates/odds-table-filter', [ 'data' ] );
+		View::load( '/templates/odds-table-filter', $data['sports_list'] );
 		?>
 	</div>
 	
 	<?php if ( ! empty( $data ) ) { ?>
 		<div class="sot-events">
 			
-			<?php foreach ( $data as $event ) {
+			<?php foreach ( $data['odds_list'] as $event ) {
 				// Show event template
 				View::load( '/templates/odds-table-event', $event );
 			} ?>

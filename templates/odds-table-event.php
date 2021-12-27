@@ -3,6 +3,7 @@
 $data = $data ?? [];
 
 ?>
+
 <div class="sot-event">
 	<div class="sot-info">
 		<strong><?php echo $data['teams'][0]; ?></strong>
