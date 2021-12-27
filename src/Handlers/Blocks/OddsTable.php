@@ -9,6 +9,7 @@
 namespace SportsOddsTable\Handlers\Blocks;
 
 use SportsOddsTable\Helper\Utils;
+use SportsOddsTable\Helper\View;
 use SportsOddsTable\CurlClient\Manager;
 
 defined( 'ABSPATH' ) || exit;
@@ -30,7 +31,7 @@ class OddsTable {
 			'textdomain'      => 'sports-odds-table',
 			'category'        => 'widgets',
 			'icon'            => 'universal-access-alt',
-			'script'          => '',
+			'script'          => 'sports-odds-table-block-front',
 			'style'           => 'sports-odds-table-block',
 			'editor_script'   => 'sports-odds-table-block',
 			'editor_style'    => 'sports-odds-table-block',
@@ -45,26 +46,65 @@ class OddsTable {
 	 * @return void
 	 */
 	public static function register_assets() {
-		$assets_uri = Utils::getConfigSetting( 'assets_uri' ) ;
+		$assets_uri = Utils::getConfigSetting( 'assets_uri' );
 		$assets_dir = Utils::getConfigSetting( 'assets_dir' );
-		$asset_file = include $assets_dir . '/table-block.asset.php';
+		
+		$asset_file = include $assets_dir . '/build/table-block.asset.php';
 		
 		// Register block styles for both frontend + backend.
 		wp_register_style(
 			'sports-odds-table-block',
-			$assets_uri . '/table-block.css',
+			$assets_uri . '/build/table-block.css',
 			is_admin() ? [ 'wp-editor' ] : null,
-			filemtime( $assets_dir . '/table-block.css' )
+			filemtime( $assets_dir . '/build/table-block.css' )
 		);
 		
 		// Register block editor script for backend.
 		wp_register_script(
 			'sports-odds-table-block',
-			$assets_uri . '/table-block.js',
+			$assets_uri . '/build/table-block.js',
 			$asset_file['dependencies'],
-			filemtime( $assets_dir . '/table-block.js' ),
+			filemtime( $assets_dir . '/build/table-block.js' ),
 			true
 		);
+		
+		// Register block editor script for frontend.
+		wp_register_script(
+			'sports-odds-table-block-front',
+			$assets_uri . '/build/table-block-front.js',
+			[ 'jquery', 'sports-odds-jcf' ],
+			filemtime( $assets_dir . '/build/table-block-front.js' ),
+			true
+		);
+	}
+	
+	public static function enqueue_assets_libs() {
+		
+		$assets_uri = Utils::getConfigSetting( 'assets_uri' );
+		$assets_dir = Utils::getConfigSetting( 'assets_dir' );
+
+		wp_enqueue_script(
+			'sports-odds-jcf',
+			$assets_uri . '/lib/jcf.js',
+			[ 'jquery' ],
+			filemtime( $assets_dir . '/lib/jcf.js' ),
+			true
+		);
+		wp_enqueue_script(
+			'sports-odds-jcf-select',
+			$assets_uri . '/lib/jcf.select.js',
+			[ 'jquery', 'sports-odds-jcf' ],
+			filemtime( $assets_dir . '/lib/jcf.select.js' ),
+			true
+		);
+		
+		wp_enqueue_style(
+			'sports-odds-jcf',
+			$assets_uri . '/lib/jcf.min.css',
+			[],
+			filemtime( $assets_dir . '/lib/jcf.min.css' ),
+		);
+
 	}
 	
 	/**
@@ -73,8 +113,10 @@ class OddsTable {
 	 * @return string
 	 **/
 	public static function show_odds_table(): string {
-		//var_dump(Manager::getOddsList( 'soccer_epl', 'uk', 'totals' ));
-		return '';
+		
+		$odds_list_data = Manager::getOddsList( 'soccer_epl', 'uk' );
+		
+		return View::load( '/templates/odds-table', $odds_list_data, true );
 		
 	}
 }

@@ -1,0 +1,126 @@
+.sot-filter-drop-custom {
+	select {
+		display: none;
+	}
+	
+	&.is-invalid {
+		.jcf-select {
+			.jcf-select-text {
+				// color: $main_red !important;
+				
+			}
+			
+			.jcf-select-opener {
+				&:after {
+					// border-left-color: $main_red;
+					// border-bottom-color: $main_red;
+				}
+			}
+		}
+	}
+	
+	.jcf-select {
+		display: block;
+		width: 100%;
+		min-width: 100px;
+		height: 48px;
+		border-radius: 4px;
+		cursor: pointer !important;
+		margin-bottom: 0 !important;
+		
+		.jcf-select-text {
+			font-size: 16px;
+			line-height: 46px;
+			margin-left: 16px;
+			margin-right: 45px;
+			cursor: pointer !important;
+		}
+		
+		.jcf-select-opener {
+			background: none;
+			width: 40px;
+			
+			&:after {
+				content: "";
+				border: 0;
+				border-left: 2px solid;
+				border-bottom: 2px solid;
+				width: 8px;
+				height: 8px;
+				transform: translate(-50%, -50%) rotate(-45deg);
+				position: absolute;
+				top: 50%;
+				left: 50%;
+			}
+		}
+		
+		&.jcf-drop-active {
+			.jcf-select-opener {
+				&:after {
+					transform: translate(-50%, -50%) rotate(-45deg) scale(-1, -1);
+				}
+			}
+		}
+		
+		&.jcf-disabled {
+			opacity: .5;
+			border-color: $main_gray !important;
+			background: $main_gray !important;
+		}
+	}
+	
+	.jcf-select-drop {
+		margin-top: 2px !important;
+		margin-bottom: 2px !important;
+		
+		.drop_maxheight & {
+			.jcf-list-content {
+				max-height: 180px !important;
+			}
+		}
+		
+		.jcf-option-hideme {
+			display: none !important;
+		}
+		
+		.jcf-select-drop-content {
+			padding: 0;
+			border: 0;
+			box-shadow: 0 4px 12px rgba(55, 174, 236, 0.2);
+			border-radius: 0;
+			background: $main_white;
+		}
+		
+		.jcf-list {
+			background: $main_white;
+			
+			ul {
+				li {
+					.jcf-option {
+						display: block;
+						padding: 5px 16px;
+						font-size: 14px;
+						line-height: 18px;
+						max-width: 100%;
+						overflow: hidden;
+						white-space: nowrap;
+						text-overflow: ellipsis;
+						cursor: pointer;
+						
+						&:hover {
+							// background: #fff !important;
+						}
+						
+						&.jcf-selected {
+						
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.jcf-focus, .jcf-focus * {
+	border-color: inherit !important;
+}
