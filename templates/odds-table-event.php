@@ -11,9 +11,7 @@ $data = $data ?? [];
 				<?php echo $data['teams'][0]; ?>
 			</strong>
 		</div>
-		<div>
-			<span>vs</span>
-		</div>
+		<span>vs</span>
 		<div>
 			<strong<?php if ( $data['teams'][1] === $data['home_team'] ) { echo ' class="sot-home-team"'; } ?>>
 				<?php echo $data['teams'][1]; ?>
@@ -32,7 +30,7 @@ $data = $data ?? [];
 							<div class="sot-odds">
 								<?php foreach ( reset( $site['odds'] ) as $key => $odd ) { ?>
 									<div class="sot-odd">
-										<div><span><?php echo $key + 1; ?></span></div>
+										<span><?php echo $key + 1; ?></span>
 										<div><strong><?php echo $odd; ?></strong></div>
 									</div>
 								<?php } ?>
