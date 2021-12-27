@@ -36,7 +36,7 @@ class Manager {
 		$is_success    = $result['success'] && ! empty( $result['data_raw'] );
 		$results_array = json_decode( $result['data_raw'], true );
 		
-		return $is_success && !empty( $results_array['data'] ) ? $results_array['data'] : [];
+		return $is_success && ! empty( $results_array['data'] ) ? $results_array['data'] : [];
 	}
 	
 	private static function initRequiredData(): bool {
@@ -84,7 +84,7 @@ class Manager {
 		$is_success    = $result['success'] && ! empty( $result['data_raw'] );
 		$results_array = json_decode( $result['data_raw'], true );
 		
-		return $is_success && !empty( $results_array['data'] ) ? $results_array['data'] : [];
+		return $is_success && ! empty( $results_array['data'] ) ? $results_array['data'] : [];
 		
 	}
 }

@@ -76,6 +76,16 @@ class OddsTable {
 			filemtime( $assets_dir . '/build/table-block-front.js' ),
 			true
 		);
+		
+		// WP Localized globals.
+		wp_localize_script(
+			'sports-odds-table-block-front',
+			'sportsOddsTable',
+			[
+				'pluginUrl' => SPORTS_ODDS_TABLE_URL,
+				'ajaxUrl'   => esc_url( admin_url( 'admin-ajax.php' ) ),
+			]
+		);
 	}
 	
 	public static function enqueue_assets_libs() {
@@ -120,5 +130,28 @@ class OddsTable {
 		
 		return View::load( '/templates/odds-table', [ 'sports_list' => $sports_list, 'odds_list' => $odds_list ], true );
 		
+	}
+	
+	public static function sports_odds_table_filter() {
+		
+		
+		$response = '';
+		
+		if ( empty( $_POST['sport'] ) && empty( $_POST['region'] ) ) {
+			wp_send_json_error();
+			
+		}
+		
+		$sport  = $_POST['sport'];
+		$region = $_POST['region'];
+		
+		$odds_list = Manager::getOddsList( $sport, $region );
+		
+		foreach ( $odds_list as $event ) {
+			
+			$response .= View::load( '/templates/odds-table-event', $event, true );
+		}
+		
+		wp_send_json_success( $response );
 	}
 }
