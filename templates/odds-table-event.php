@@ -28,8 +28,8 @@ $data = $data ?? [];
 							<div class="sot-odds">
 								<?php foreach ( reset( $site['odds'] ) as $key => $odd ) { ?>
 									<div class="sot-odd">
-										<span><?php echo $key + 1; ?></span>
-										<strong><?php echo $odd; ?></strong>
+										<div><span><?php echo $key + 1; ?></span></div>
+										<div><strong><?php echo $odd; ?></strong></div>
 									</div>
 								<?php } ?>
 							</div>
