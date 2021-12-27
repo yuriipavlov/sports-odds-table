@@ -11,14 +11,15 @@ $data = $data ?? [];
 	
 	</div>
 	
-	<?php
-	// Show filter template
-	View::load( '/templates/odds-table-filter', [ 'data' ] );
-	?>
+	<div class="sot-filter">
+		<?php
+		// Show filter template
+		View::load( '/templates/odds-table-filter', [ 'data' ] );
+		?>
+	</div>
 	
 	<?php if ( ! empty( $data ) ) { ?>
 		<div class="sot-events">
-			
 			
 			<?php foreach ( $data as $event ) {
 				// Show event template
@@ -27,7 +28,7 @@ $data = $data ?? [];
 		
 		</div>
 	<?php } else { ?>
-		<div class="sot-empty">
+		<div class="sot-events sot-empty">
 			<p><?php _e( 'There is no Odds data', 'sports-odds-table' ); ?></p>
 		</div>
 	<?php } ?>

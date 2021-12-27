@@ -36,7 +36,7 @@ class Manager {
 		$is_success    = $result['success'] && ! empty( $result['data_raw'] );
 		$results_array = json_decode( $result['data_raw'], true );
 		
-		return $is_success ? $results_array['data'] : [];
+		return $is_success && !empty( $results_array['data'] ) ? $results_array['data'] : [];
 	}
 	
 	private static function initRequiredData(): bool {
@@ -61,13 +61,13 @@ class Manager {
 	/**
 	 * Get List of Odds
 	 *
-	 * @param string $sport
-	 * @param string $region
-	 * @param string $mkt
+	 * @param string $sport the sport_key from the /sports endpoint, or use 'upcoming' to see the next 8 games across all sports
+	 * @param string $region uk | us | eu | au
+	 * @param string $mkt (optional) market - h2h (default) | spreads | totals
 	 *
 	 * @return array
 	 */
-	public static function getOddsList( string $sport, string $region, $mkt = '' ): array {
+	public static function getOddsList( string $sport, string $region, string $mkt = '' ): array {
 		
 		if ( ! self::initRequiredData() ) {
 			return [];
@@ -84,7 +84,7 @@ class Manager {
 		$is_success    = $result['success'] && ! empty( $result['data_raw'] );
 		$results_array = json_decode( $result['data_raw'], true );
 		
-		return $is_success ? $results_array['data'] : [];
+		return $is_success && !empty( $results_array['data'] ) ? $results_array['data'] : [];
 		
 	}
 }
