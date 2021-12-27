@@ -30,11 +30,9 @@
 			
 			span {
 				color: $main_red;
-			}
-			
-			img {
-				max-width: 18px;
-				flex: 0 0 18px;
+				display: block;
+				font-size: 0.8em;
+				line-height: 80%;
 			}
 			
 			.sot-home-team {
@@ -46,7 +44,6 @@
 				display: block;
 				font-style: normal;
 				color: $main_gray;
-				padding-top: 10px;
 			}
 		}
 		
@@ -99,6 +96,9 @@
 							
 							span {
 								color: $main_gray;
+								display: block;
+								font-size: 0.8em;
+								line-height: 80%;
 							}
 						}
 					}

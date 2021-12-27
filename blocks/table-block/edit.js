@@ -1,11 +1,11 @@
 /**
- * Retrieves the translation of text.
+ * Import block editor and server side render component
  *
- * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
+ * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-server-side-render/
  */
-import { __ } from '@wordpress/i18n';
 
 import { useBlockProps } from '@wordpress/block-editor';
+import ServerSideRender from '@wordpress/server-side-render';
 
 /**
  * This represents what the editor will render when the block is used.
@@ -15,7 +15,9 @@ import { useBlockProps } from '@wordpress/block-editor';
 export default function Edit() {
 	return (
 		<p { ...useBlockProps() }>
-			{ __( 'Sports Odds Table', 'sports-odds-table' ) }
+			<ServerSideRender
+				block="sports-odds-table/table-block"
+			/>
 		</p>
 	);
 }
