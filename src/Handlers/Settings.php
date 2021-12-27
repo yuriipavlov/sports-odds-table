@@ -6,7 +6,6 @@ use SportsOddsTable\Helper\View;
 
 defined( 'ABSPATH' ) || exit;
 
-
 class Settings {
 	
 	
