@@ -36,9 +36,6 @@ if ( PHP_VERSION_ID < 70400 ) {
 	wp_die( sprintf( __( 'Sports Odds Table require at least PHP 7.4.0 ( You are using PHP %s ) ' ), PHP_VERSION ) );
 }
 
-// Helper functions for develop
-require_once SPORTS_ODDS_TABLE_DIR . '/dev.php';
-
 // Autoload
 require_once SPORTS_ODDS_TABLE_DIR . '/autoload.php';
 
