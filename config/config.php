@@ -17,6 +17,6 @@ return [
 	'errors_silent'   => true,
 	'odds_api_url'    => 'https://api.the-odds-api.com/v3/',
 	'vendor_dir'      => SPORTS_ODDS_TABLE_DIR . '/vendor',
-	'assets_dir'      => SPORTS_ODDS_TABLE_DIR . '/assets/build',
-	'assets_uri'      => SPORTS_ODDS_TABLE_URL . '/assets/build',
+	'assets_dir'      => SPORTS_ODDS_TABLE_DIR . '/assets',
+	'assets_uri'      => SPORTS_ODDS_TABLE_URL . '/assets',
 ];

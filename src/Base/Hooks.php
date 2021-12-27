@@ -32,6 +32,7 @@ class Hooks {
 		 ************************************/
 		add_action( 'init', [ Blocks\OddsTable::class, 'register_block' ] );
 		add_action( 'init', [ Blocks\OddsTable::class, 'register_assets' ] );
+		add_action( 'wp_enqueue_scripts', [ Blocks\OddsTable::class, 'enqueue_assets_libs' ], 5 );
 		
 		
 		/************************************
