@@ -1,5 +1,7 @@
 
 .sot-events {
+	background: $main_white;
+	padding: 20px 15px 15px 0;
 	
 	.sot-event {
 		display: flex;
@@ -7,6 +9,10 @@
 		justify-content: center;
 		padding: 15px 0;
 		border-bottom: 1px solid $main_gray;
+		
+		&:last-child {
+			border-bottom: none;
+		}
 		
 		.sot-info {
 			text-align: center;
@@ -20,7 +26,6 @@
 			
 			span, strong {
 				font-weight: bold;
-				display: block;
 			}
 			
 			span {
@@ -30,6 +35,11 @@
 			img {
 				max-width: 18px;
 				flex: 0 0 18px;
+			}
+			
+			.sot-home-team {
+				padding-left: 20px;
+				background: url(../images/home.svg) no-repeat left center;
 			}
 			
 			.sot-date {
@@ -55,7 +65,7 @@
 				max-width: 100%;
 				flex: 0 0 100%;
 				overflow: auto;
-				padding: 0 0 10px 0;
+				padding: 0;
 				margin: 0;
 				list-style: none;
 				

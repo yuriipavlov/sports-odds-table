@@ -48,7 +48,7 @@ $data = $data ?? [];
 		</div>
 	</div>
 </div>
-<div class="sot-filter-item sot-filter-button">
+<div class="sot-filter-button">
 	<button class="sot-filter-btn sot-btn-block sot-filter-btn__js"><?php _e( 'Filter', 'sports-odds-table' ); ?></button>
 </div>
 
