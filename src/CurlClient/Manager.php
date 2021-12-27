@@ -11,6 +11,7 @@ namespace SportsOddsTable\CurlClient;
 
 use SportsOddsTable\Helper\Utils;
 
+defined( 'ABSPATH' ) || exit;
 
 class Manager {
 	
@@ -32,11 +33,27 @@ class Manager {
 		
 		$request_url = self::$base_url . 'sports?apiKey=' . self::$api_key;
 		
-		$result        = Process::run( $request_url, [] );
+		$result = Cache::getSportsList();
+		
+		if ( empty( $result ) ) {
+			$result = Process::run( $request_url, [] );
+		}
+		
 		$is_success    = $result['success'] && ! empty( $result['data_raw'] );
 		$results_array = json_decode( $result['data_raw'], true );
 		
-		return $is_success && ! empty( $results_array['data'] ) ? $results_array['data'] : [];
+		if ( $is_success && ! empty( $results_array['data'] ) ) {
+			
+			Cache::setSportsList( $result );
+			
+			return $results_array['data'];
+			
+		} else {
+			
+			return [];
+			
+		}
+		
 	}
 	
 	private static function initRequiredData(): bool {
@@ -80,11 +97,26 @@ class Manager {
 			$request_url .= "&mkt={$mkt}";
 		}
 		
-		$result        = Process::run( $request_url, [] );
+		$result = Cache::getOddsList( $sport, $region, $mkt );
+		
+		if ( empty( $result ) ) {
+			$result = Process::run( $request_url, [] );
+		}
+		
 		$is_success    = $result['success'] && ! empty( $result['data_raw'] );
 		$results_array = json_decode( $result['data_raw'], true );
 		
-		return $is_success && ! empty( $results_array['data'] ) ? $results_array['data'] : [];
+		if ( $is_success && ! empty( $results_array['data'] ) ) {
+			
+			Cache::setOddsList( $sport, $region, $mkt, $result );
+			
+			return $results_array['data'];
+			
+		} else {
+			
+			return [];
+			
+		}
 		
 	}
 }
