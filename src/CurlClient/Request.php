@@ -10,7 +10,6 @@ namespace SportsOddsTable\CurlClient;
 
 defined( 'ABSPATH' ) || exit;
 
-
 class Request {
 	
 	private $ch;

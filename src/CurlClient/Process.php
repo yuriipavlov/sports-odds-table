@@ -12,7 +12,6 @@ use Exception;
 
 defined( 'ABSPATH' ) || exit;
 
-
 class Process {
 	
 	public static function run(
@@ -58,7 +57,7 @@ class Process {
 		}
 		
 		// Debug all requests
-		//error_log( "CURL CLIENT SUCCESS [request_url({$request_url})]" );
+		error_log( "CURL CLIENT SUCCESS [request_url({$request_url})]" );
 		
 		return [
 			'success'    => true,
