@@ -6,15 +6,19 @@ $data = $data ?? [];
 
 <div class="sot-event">
 	<div class="sot-info">
-		<strong><?php echo $data['teams'][0]; ?></strong>
-		<?php if ( $data['teams'][0] === $data['home_team'] ) {
-			echo ' home img';
-		} ?>
-		<span>vs</span>
-		<strong><?php echo $data['teams'][1]; ?></strong>
-		<?php if ( $data['teams'][1] === $data['home_team'] ) {
-			echo ' home img';
-		} ?>
+		<div>
+			<strong<?php if ( $data['teams'][0] === $data['home_team'] ) { echo ' class="sot-home-team"'; } ?>>
+				<?php echo $data['teams'][0]; ?>
+			</strong>
+		</div>
+		<div>
+			<span>vs</span>
+		</div>
+		<div>
+			<strong<?php if ( $data['teams'][1] === $data['home_team'] ) { echo ' class="sot-home-team"'; } ?>>
+				<?php echo $data['teams'][1]; ?>
+			</strong>
+		</div>
 		<div class="sot-date"><?php echo date( 'M dS H:i', $data['commence_time'] ); ?></div>
 	</div>
 	
