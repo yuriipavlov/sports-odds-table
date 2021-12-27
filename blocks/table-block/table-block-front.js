@@ -26,7 +26,7 @@ class SportsOddsTable {
 		$('.sot-filter-btn__js').on('click', function (e) {
 			
 			let $block = $(this).closest('.sports-odds-table'),
-				$loading = $block.find('.loading'),
+				$loading = $block.find('.sot-loading'),
 				$eventsContainer = $block.find('.sot-events'),
 				data = {
 					action: 'sports_odds_table_filter',

@@ -24,6 +24,7 @@ $data = $data ?? [];
 			} ?>
 		
 		</div>
+		<div class="sot-loading">Loading&#8230;</div>
 	<?php } else { ?>
 		<div class="sot-events sot-empty">
 			<p><?php _e( 'There is no Odds data', 'sports-odds-table' ); ?></p>
