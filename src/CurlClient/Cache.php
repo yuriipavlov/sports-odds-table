@@ -17,11 +17,11 @@ class Cache {
 	/**
 	 * Get cached data by request url
 	 *
-	 * @param $request_url
+	 * @param string $request_url
 	 *
 	 * @return array
 	 */
-	public static function get( $request_url ): array {
+	public static function get( string $request_url ): array {
 		
 		if ( empty( get_option( 'sot_cache_enable', '' ) ) ) {
 			return [];
@@ -37,11 +37,11 @@ class Cache {
 	/**
 	 * Prepare option name - clear and reduce
 	 *
-	 * @param $url
+	 * @param string $url
 	 *
 	 * @return string
 	 */
-	public static function prepare_name( $url ): string {
+	public static function prepare_name( string $url ): string {
 		
 		$settings_prefix = Utils::getConfigSetting( 'settings_prefix' );
 		$odds_api_url    = Utils::getConfigSetting( 'odds_api_url' );
@@ -57,12 +57,12 @@ class Cache {
 	/**
 	 *
 	 *
-	 * @param $request_url
-	 * @param $value
+	 * @param string $request_url
+	 * @param array $value
 	 *
 	 * @return bool
 	 */
-	public static function set( $request_url, $value ): bool {
+	public static function set( string $request_url, array $value ): bool {
 		
 		if ( empty( get_option( 'sot_cache_enable', '' ) ) ) {
 			return false;
