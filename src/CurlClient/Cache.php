@@ -15,69 +15,63 @@ defined( 'ABSPATH' ) || exit;
 class Cache {
 	
 	/**
-	 * Get Odds data from cache
+	 * Get cached data by request url
 	 *
-	 * @param $sport
-	 * @param $region
-	 * @param $mkt
+	 * @param $request_url
 	 *
-	 * @return mixed
+	 * @return array
 	 */
-	public static function getOddsList( $sport, $region, $mkt ) {
+	public static function get( $request_url ): array {
 		
-		$settings_prefix = Utils::getConfigSetting( 'settings_prefix' );
+		if ( empty( get_option( 'sot_cache_enable', '' ) ) ) {
+			return [];
+		}
 		
-		$name = $settings_prefix . $sport . '_' . $region . '_' . $mkt;
+		$name = self::prepare_name( $request_url );
 		
-		return get_transient( $name );
+		$result = get_transient( $name );
+		
+		return ! empty( $result ) ? $result : [];
 	}
 	
 	/**
-	 * Set Odds data to cache
+	 * Prepare option name - clear and reduce
 	 *
-	 * @param string $sport
-	 * @param string $region
-	 * @param string $mkt
-	 * @param mixed $value
+	 * @param $url
+	 *
+	 * @return string
 	 */
-	public static function setOddsList( string $sport, string $region, string $mkt, $value ) {
+	public static function prepare_name( $url ): string {
 		
 		$settings_prefix = Utils::getConfigSetting( 'settings_prefix' );
+		$odds_api_url    = Utils::getConfigSetting( 'odds_api_url' );
+		$api_key         = Utils::getOddsApiKey();
 		
-		$name = $settings_prefix . $sport . '_' . $region . '_' . $mkt;
+		$url = str_replace( $api_key, hash( 'adler32', $api_key ), $url );
+		$url = str_replace( $odds_api_url, '', $url );
+		$url = str_replace( [ '/', '?', '&', '=' ], '-', $url );
+		
+		return sanitize_key( $settings_prefix . $url );
+	}
+	
+	/**
+	 *
+	 *
+	 * @param $request_url
+	 * @param $value
+	 *
+	 * @return bool
+	 */
+	public static function set( $request_url, $value ): bool {
+		
+		if ( empty( get_option( 'sot_cache_enable', '' ) ) ) {
+			return false;
+		}
+		
+		$name = self::prepare_name( $request_url );
 		
 		// Set transient on 5 minutes
-		set_transient( $name, $value, 60 * 5 );
+		return set_transient( $name, $value, 60 * 5 );
 	}
 	
-	/**
-	 * Get sports list from cache
-	 *
-	 * @return mixed
-	 */
-	public static function getSportsList() {
-		
-		$settings_prefix = Utils::getConfigSetting( 'settings_prefix' );
-		
-		$name = $settings_prefix . 'sports';
-		
-		return get_transient( $name );
-	
-	}
-	
-	/**
-	 * Set sports list to cache
-	 *
-	 * @param mixed $value
-	 */
-	public static function setSportsList( $value ) {
-		
-		$settings_prefix = Utils::getConfigSetting( 'settings_prefix' );
-		
-		$name = $settings_prefix . 'sports';
-		
-		// Set transient on 5 minutes
-		set_transient( $name, $value, 60 * 5 );
-	
-	}
 }
