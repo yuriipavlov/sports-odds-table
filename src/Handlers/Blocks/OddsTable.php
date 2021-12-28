@@ -132,6 +132,9 @@ class OddsTable {
 		
 	}
 	
+	/**
+	 * Ajax callback function. Returns data for filter
+	 */
 	public static function sports_odds_table_filter() {
 		
 		

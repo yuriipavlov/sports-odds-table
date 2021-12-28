@@ -33,27 +33,11 @@ class Manager {
 		
 		$request_url = self::$base_url . 'sports?apiKey=' . self::$api_key;
 		
-		$result = Cache::getSportsList();
-		
-		if ( empty( $result ) ) {
-			$result = Process::run( $request_url, [] );
-		}
-		
+		$result        = Process::run( $request_url, [] );
 		$is_success    = $result['success'] && ! empty( $result['data_raw'] );
 		$results_array = json_decode( $result['data_raw'], true );
 		
-		if ( $is_success && ! empty( $results_array['data'] ) ) {
-			
-			Cache::setSportsList( $result );
-			
-			return $results_array['data'];
-			
-		} else {
-			
-			return [];
-			
-		}
-		
+		return $is_success && ! empty( $results_array['data'] ) ? $results_array['data'] : [];
 	}
 	
 	private static function initRequiredData(): bool {
@@ -97,26 +81,11 @@ class Manager {
 			$request_url .= "&mkt={$mkt}";
 		}
 		
-		$result = Cache::getOddsList( $sport, $region, $mkt );
-		
-		if ( empty( $result ) ) {
-			$result = Process::run( $request_url, [] );
-		}
-		
+		$result        = Process::run( $request_url, [] );
 		$is_success    = $result['success'] && ! empty( $result['data_raw'] );
 		$results_array = json_decode( $result['data_raw'], true );
 		
-		if ( $is_success && ! empty( $results_array['data'] ) ) {
-			
-			Cache::setOddsList( $sport, $region, $mkt, $result );
-			
-			return $results_array['data'];
-			
-		} else {
-			
-			return [];
-			
-		}
+		return $is_success && ! empty( $results_array['data'] ) ? $results_array['data'] : [];
 		
 	}
 }

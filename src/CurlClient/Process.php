@@ -20,6 +20,12 @@ class Process {
 		array $ok_codes = [ 200, 301, 302 ] // leave empty if no code checking required
 	): array {
 		
+		// Check cache first
+		$result = Cache::get( $request_url );
+		if ( ! empty( $result ) ) {
+			return $result;
+		}
+		
 		try {
 			$request = new Request();
 			
@@ -59,12 +65,19 @@ class Process {
 		// Debug all requests
 		error_log( "CURL CLIENT SUCCESS [request_url({$request_url})]" );
 		
-		return [
+		
+		$result = [
 			'success'    => true,
 			'message'    => '',
 			'error_code' => 0,
 			'data'       => $res['body'],
 			'data_raw'   => $res['body_raw'],
 		];
+		
+		if ( ! empty( $res['body_raw'] ) ) {
+			Cache::set( $request_url, $result );
+		}
+		
+		return $result;
 	}
 }
